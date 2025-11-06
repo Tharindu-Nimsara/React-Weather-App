@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 
 export default function SearchBox({ onSearchLocation }) {
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState(""); //initial value is empty string. it resolves undefined error
 
   const setLoactionInput = (e) => {
     setLocation(e.target.value);
