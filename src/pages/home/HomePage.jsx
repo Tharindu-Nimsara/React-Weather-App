@@ -43,8 +43,7 @@ export default function HomePage() {
       .catch((err) => console.error("Error fetching weather data:", err));
   }, [geoRes, apiKey]);
 
-
-   //for testing
+  //for testing
   useEffect(() => {
     if (weatherData) console.log("✅ weatherData:", weatherData);
   }, [weatherData]);
@@ -56,7 +55,12 @@ export default function HomePage() {
   return (
     <div className="bg-[#1F2937] min-h-screen flex flex-col items-center justify-center gap-10 py-10">
       <SearchBox onSearchLocation={searchLocation} />
-      <WeatherCard  />
+
+      {weatherData && location ? (
+        <WeatherCard location={location} weatherData={weatherData} />
+      ) : (
+        <p className="text-white">Search for a city to see the weather</p>
+      )}
     </div>
   );
 }
